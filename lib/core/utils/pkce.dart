@@ -1,10 +1,20 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_authflow_pro/app.dart';
-import 'package:flutter_authflow_pro/core/di/locator.dart';
+import 'dart:convert';
+import 'dart:math';
+import 'package:crypto/crypto.dart';
 
+class PkcePair {
+  final String verifier;
+  final String challenge;
+  PkcePair(this.verifier, this.challenge);
+}
 
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await setupLocator();
-  runApp(const App());
+String _base64UrlNoPad(List<int> bytes) =>
+    base64UrlEncode(bytes).replaceAll('=', '');
+
+PkcePair generatePkce({int length = 43}) {
+  final rand = Random.secure();
+  final verifier = List<int>.generate(length, (_) => rand.nextInt(256));
+  final v = _base64UrlNoPad(verifier);
+  final challenge = _base64UrlNoPad(sha256.convert(utf8.encode(v)).bytes);
+  return PkcePair(v, challenge);
 }
