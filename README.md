@@ -1,2 +1,2 @@
-# flutter_authflow_pro
-Advanced Flutter demo app implementing OAuth2 / OIDC PKCE flow with token refresh, interceptors, and clean architecture — all simulated locally without a backend.
+﻿# Flutter AuthFlow Pro
+Advanced Flutter demo for OAuth2 / OIDC PKCE with mock server and token refresh.
