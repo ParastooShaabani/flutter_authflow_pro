@@ -12,11 +12,31 @@ class AppRoutes {
 
   static Route onGenerateRoute(RouteSettings s) {
     switch (s.name) {
-      case login: return MaterialPageRoute(builder: (_) => const LoginPage());
-      case consent: return MaterialPageRoute(builder: (_) => const ConsentPage());
-      case callback: return MaterialPageRoute(builder: (_) => const CallbackPage());
-      case home: return MaterialPageRoute(builder: (_) => const HomePage());
-      default: return MaterialPageRoute(builder: (_) => const LoginPage());
+      case login:
+        return MaterialPageRoute(
+          builder: (_) => const LoginPage(),
+          settings: s,
+        );
+      case consent:
+        return MaterialPageRoute(
+          builder: (_) => const ConsentPage(),
+          settings: s,
+        );
+      case callback:
+        return MaterialPageRoute(
+          builder: (_) => const CallbackPage(),
+          settings: s,
+        );
+      case home:
+        return MaterialPageRoute(
+          builder: (_) => const HomePage(),
+          settings: s,
+        );
+      default:
+        return MaterialPageRoute(
+          builder: (_) => const LoginPage(),
+          settings: s,
+        );
     }
   }
 }
