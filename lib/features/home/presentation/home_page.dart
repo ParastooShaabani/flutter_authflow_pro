@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_authflow_pro/core/di/locator.dart';
-import 'package:flutter_authflow_pro/core/mock/mock_api_server.dart';
+import 'package:flutter_authflow_pro/core/network/dio_client.dart';
 import 'package:flutter_authflow_pro/features/auth/data/auth_repository.dart';
 import 'package:flutter_authflow_pro/routes/app_routes.dart';
 
@@ -22,16 +22,25 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> _load() async {
+    final ctx = context;
+
     final repo = sl<AuthRepository>();
     final tokens = await repo.current();
+
     if (tokens == null) {
-      if (mounted) Navigator.pushReplacementNamed(context, AppRoutes.login);
+      if (!ctx.mounted) return;
+      Navigator.of(ctx).pushReplacementNamed(AppRoutes.login);
       return;
     }
+
     try {
-      final data = await MockApiServer().getSecretData();
-      setState(() => secret = data);
+      final dio = buildAuthedDio();
+      final res = await dio.get('https://mockapi.local/secret');
+
+      if (!ctx.mounted) return; // guard before setState
+      setState(() => secret = res.data.toString());
     } catch (e) {
+      if (!ctx.mounted) return;
       setState(() => error = e.toString());
     }
   }
@@ -49,10 +58,10 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () async {
+          final ctx = context;
           await sl<AuthRepository>().logout();
-          if (mounted) {
-            Navigator.pushReplacementNamed(context, AppRoutes.login);
-          }
+          if (!ctx.mounted) return;
+          Navigator.of(ctx).pushReplacementNamed(AppRoutes.login);
         },
         label: const Text('Logout'),
         icon: const Icon(Icons.logout),

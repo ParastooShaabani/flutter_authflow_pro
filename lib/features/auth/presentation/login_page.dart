@@ -19,12 +19,12 @@ class _LoginPageState extends State<LoginPage> {
       appBar: AppBar(title: const Text('AuthFlow Pro — Login')),
       body: Center(
         child: FilledButton(
-          onPressed: () async {
-            final code = await auth.beginAuth();
-            if (!mounted) return;
-            Navigator.pushNamed(context, AppRoutes.consent, arguments: code);
-          },
-          child: const Text('Sign in with MockOIDC'),
+            onPressed: () async {
+              final code = await auth.beginAuth();
+              if (!context.mounted) return;
+              Navigator.of(context).pushNamed(AppRoutes.consent, arguments: code);
+            },
+            child: const Text('Sign in with MockOIDC'),
         ),
       ),
     );
