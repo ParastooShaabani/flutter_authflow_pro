@@ -20,7 +20,7 @@ class _CallbackPageState extends State<CallbackPage> {
   }
 
   Future<void> _handleCallback() async {
-    // In a real OAuth flow, you’d extract `code` from URL parameters.
+    // In a real OAuth flow, extract `code` from URL parameters.
     // For now, just simulate success after short delay.
     await Future.delayed(const Duration(milliseconds: 500));
 

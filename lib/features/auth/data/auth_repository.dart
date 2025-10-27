@@ -7,7 +7,7 @@ class AuthRepository {
   final MockAuthServer auth;
   final TokenStore store;
 
-  PkcePair? _pkce;
+  PKCEPair? _pkce;
 
   AuthRepository({required this.auth, required this.store});
 
