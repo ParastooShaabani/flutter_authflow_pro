@@ -8,7 +8,28 @@ class ConsentPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final code = ModalRoute.of(context)!.settings.arguments as String;
+    final args = ModalRoute.of(context)?.settings.arguments;
+    final code = args is String ? args : null;
+
+    if (code == null) {
+      return Scaffold(
+        appBar: AppBar(title: const Text('Grant Access')),
+        body: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Text('No authorization code received.'),
+              const SizedBox(height: 12),
+              FilledButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text('Back to Login'),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(title: const Text('Grant Access')),
       body: Center(

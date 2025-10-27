@@ -6,8 +6,11 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 abstract class TokenStore {
   Future<void> init();
+
   Future<void> save(TokenSet tokens);
+
   Future<TokenSet?> read();
+
   Future<void> clear();
 }
 
@@ -17,11 +20,10 @@ class TokenStoreImpl implements TokenStore {
 
   @override
   Future<void> init() async {
-    if (!kIsWeb) {
-      // secure storage used on mobile; GetStorage for misc data
-    } else {
+    if (kIsWeb) {
       await GetStorage.init('auth_box');
     }
+    // On mobile, FlutterSecureStorage works out of the box.
   }
 
   @override

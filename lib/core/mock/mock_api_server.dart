@@ -1,11 +1,12 @@
 import 'dart:async';
+import 'package:dio/dio.dart';
+import 'package:flutter_authflow_pro/core/network/dio_client.dart';
 
 class MockApiServer {
-  Future<String> getSecretData(String accessToken) async {
-    await Future.delayed(const Duration(milliseconds: 400));
-    if (!accessToken.startsWith('access_')) {
-      throw Exception('invalid_token');
-    }
-    return 'Top Secret: 🫣 Parastoo is awesome!';
+  final Dio dio = buildAuthedDio();
+
+  Future<String> getSecretData() async {
+    final res = await dio.get('https://mockapi.local/secret');
+    return res.data as String;
   }
 }
