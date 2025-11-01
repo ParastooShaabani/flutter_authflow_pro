@@ -1,51 +1,46 @@
 ﻿# Flutter AuthFlow Pro
-Advanced Flutter demo app showing a secure OAuth2 / OIDC PKCE flow with token storage, Dio interceptors (Authorization + Refresh), and a mock backend — runs on Android / iOS / Web, no external server required.
--------------------------------------------------------------------------
+Advanced Flutter demo app showing a **secure OAuth2 / OIDC PKCE flow** with token storage, Dio interceptors (Authorization + Refresh), and a mock backend — runs on **Android / iOS / Web**, no external server required.
 
-✨ What this demonstrates
+---
 
-- PKCE (code verifier + S256 challenge) end-to-end
+## ✨ What this demonstrates
+- **PKCE** (code verifier + S256 challenge) end-to-end
+- **Token storage:** secure on mobile, local on web
+- **Dio interceptors:** inject `Authorization`, refresh on 401, retry original request
+- **Clean DI** via `GetIt`
+- **Async safety** using `context.mounted` pattern
+- **Mock servers** for `/authorize`, `/token`, and a protected `/secret`
 
-- Token storage: secure on mobile, local on web
+---
 
-- Dio interceptors: inject Authorization, refresh on 401, retry original request
-
-- Clean DI via GetIt
-
-- Async safety using context.mounted pattern
-
-- Mock servers for /authorize, /token, and a protected /secret
-
--------------------------------------------------------------------------
-
-🔐 Auth Flow (PKCE) — Diagram
-
+## 🔐 Auth Flow (PKCE) — Diagram
 This is the real sequence app simulates locally.
 
-sequenceDiagram:
+```mermaid
+sequenceDiagram
+  participant User
+  participant App as Flutter App
+  participant Auth as MockAuthServer
+  participant API as MockApiServer
 
-participant User
-participant App as Flutter App
-participant Auth as MockAuthServer
-participant API as MockApiServer
+  User->>App: Tap "Sign in with MockOIDC"
+  App->>App: generate PKCE (verifier, challenge)
+  App->>Auth: /authorize?code_challenge=S256(...)
+  Auth-->>App: auth_code_123
 
-User->>App: Tap "Sign in with MockOIDC"
-App->>App: generate PKCE (verifier, challenge)
-App->>Auth: /authorize?code_challenge=S256(...)
-Auth-->>App: auth_code_123
+  App->>Auth: /token (code + code_verifier)
+  Auth-->>App: {access_token, refresh_token, expires_at}
+  App->>App: save tokens (secure on mobile / local on web)
 
-App->>Auth: /token (code + code_verifier)
-Auth-->>App: {access_token, refresh_token, expires_at}
-App->>App: save tokens (secure on mobile / local on web)
+  App->>API: GET /secret (Authorization: Bearer access_*)
+  API-->>App: 200 "Top Secret: …"
 
-App->>API: GET /secret (Authorization: Bearer access_*)
-API-->>App: 200 "Top Secret: …"
-
-Note over App,Auth: When access token expires →
-App->>Auth: /token (grant_type=refresh_token)
-Auth-->>App: new {access_token, expires_at}
-App->>API: Retry original request
-API-->>App: 200
+  Note over App,Auth: When access token expires →
+  App->>Auth: /token (grant_type=refresh_token)
+  Auth-->>App: new {access_token, expires_at}
+  App->>API: Retry original request
+  API-->>App: 200
+```
 
 -------------------------------------------------------------------------
 
@@ -109,8 +104,6 @@ returns 200 with mock data when authorized
 Login → Consent → Home (protected)
 
 Logout clears tokens and returns to Login
-
-On Windows you can save with Win + Shift + S, then drop images in assets/readme/ and reference them:
 
 ![Login](assets/readme/login.png)
 ![Home](assets/readme/home.png)
