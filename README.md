@@ -1,4 +1,14 @@
 ﻿# Flutter AuthFlow Pro
+<p align="center">
+  <img src="https://img.shields.io/badge/Flutter-02569B?logo=flutter&logoColor=white" />
+  <img src="https://img.shields.io/badge/Dart-0175C2?logo=dart&logoColor=white" />
+  <img src="https://img.shields.io/badge/Crypto-2E7D32?logo=lock&logoColor=white" />
+  <img src="https://img.shields.io/badge/Dio-FF6F00?logo=swagger&logoColor=white" />
+  <img src="https://img.shields.io/badge/GetIt-009688?logo=dependabot&logoColor=white" />
+  <img src="https://img.shields.io/badge/GetStorage-512BD4?logo=storage&logoColor=white" />
+  <img src="https://img.shields.io/badge/Flutter%20Secure%20Storage-239120?logo=azurekeyvault&logoColor=white" />
+  <img src="https://img.shields.io/badge/GitHub%20Actions-2088FF?logo=github-actions&logoColor=white" />
+</p>
 Advanced Flutter demo app showing a **secure OAuth2 / OIDC PKCE flow** with token storage, Dio interceptors (Authorization + Refresh), and a mock backend — runs on **Android / iOS / Web**, no external server required.
 
 ---
@@ -116,6 +126,25 @@ Logout clears tokens and returns to Login
 - **GetIt** – dependency injection
 - **GetStorage**, **Flutter Secure Storage** – local & secure token storage
 - **crypto** – PKCE S256 challenge (SHA-256 hashing & base64Url encoding)
+
+
+---
+
+## 🧰 Tech Stack
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Flutter-02569B?logo=flutter&logoColor=white" />
+  <img src="https://img.shields.io/badge/Dart-0175C2?logo=dart&logoColor=white" />
+  <img src="https://img.shields.io/badge/Dio-FF6F00?logo=swagger&logoColor=white" />
+  <img src="https://img.shields.io/badge/GetIt-009688?logo=dependabot&logoColor=white" />
+  <img src="https://img.shields.io/badge/GetStorage-512BD4?logo=storage&logoColor=white" />
+  <img src="https://img.shields.io/badge/Flutter%20Secure%20Storage-239120?logo=azurekeyvault&logoColor=white" />
+  <img src="https://img.shields.io/badge/Crypto-2E7D32?logo=lock&logoColor=white" />
+  <img src="https://img.shields.io/badge/GitHub%20Actions-2088FF?logo=github-actions&logoColor=white" />
+</p>
+
+---
+
 
 -------------------------------------------------------------------------
 
