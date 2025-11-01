@@ -32,7 +32,7 @@ Dio buildAuthedDio() {
             Response(
               requestOptions: options,
               statusCode: 200,
-              data: 'Top Secret: 🫣 Parastoo is awesome (via Dio)!',
+              data: 'Top Secret: 🫣 it is awesome (via Dio)!',
             ),
           );
         }
