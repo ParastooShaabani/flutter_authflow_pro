@@ -43,7 +43,7 @@ sequenceDiagram
 ```
 
 -------------------------------------------------------------------------
-
+```text
 🧱 Architecture
 lib/
     app.dart
@@ -67,7 +67,7 @@ lib/
             presentation/{login_page, consent_page, callback_page}.dart
         home/
             presentation/home_page.dart
-
+```
 -------------------------------------------------------------------------
 
 * Key ideas
