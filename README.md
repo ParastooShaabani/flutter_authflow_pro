@@ -110,11 +110,12 @@ Logout clears tokens and returns to Login
 
 -------------------------------------------------------------------------
 
-⚙️ Tech Stack
-
-Flutter, Dart
-
-Dio, GetIt, GetStorage, Flutter Secure Storage
+## ⚙️ Tech Stack
+- **Flutter**, **Dart**
+- **Dio** – API networking & interceptors
+- **GetIt** – dependency injection
+- **GetStorage**, **Flutter Secure Storage** – local & secure token storage
+- **crypto** – PKCE S256 challenge (SHA-256 hashing & base64Url encoding)
 
 -------------------------------------------------------------------------
 
