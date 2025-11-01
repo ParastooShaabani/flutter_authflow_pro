@@ -7,6 +7,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'AuthFlow Pro',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.teal),
       onGenerateRoute: AppRoutes.onGenerateRoute,
       initialRoute: AppRoutes.login,
