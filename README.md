@@ -1,19 +1,23 @@
 ﻿# Flutter AuthFlow Pro
-<p align="center">
-  <img src="https://img.shields.io/badge/Flutter-02569B?logo=flutter&logoColor=white" />
-  <img src="https://img.shields.io/badge/Dart-0175C2?logo=dart&logoColor=white" />
-  <img src="https://img.shields.io/badge/Crypto-2E7D32?logo=lock&logoColor=white" />
-  <img src="https://img.shields.io/badge/Dio-FF6F00?logo=swagger&logoColor=white" />
-  <img src="https://img.shields.io/badge/GetIt-009688?logo=dependabot&logoColor=white" />
-  <img src="https://img.shields.io/badge/GetStorage-512BD4?logo=storage&logoColor=white" />
-  <img src="https://img.shields.io/badge/Flutter%20Secure%20Storage-239120?logo=azurekeyvault&logoColor=white" />
-  <img src="https://img.shields.io/badge/GitHub%20Actions-2088FF?logo=github-actions&logoColor=white" />
-</p>
+
+<div style="text-align: center;">
+
+<img alt="Flutter" src="https://img.shields.io/badge/Flutter-02569B?logo=flutter&logoColor=white" />
+<img alt="Dart" src="https://img.shields.io/badge/Dart-0175C2?logo=dart&logoColor=white" />
+<img alt="Dio" src="https://img.shields.io/badge/Dio-FF6F00?logo=swagger&logoColor=white" />
+<img alt="GetIt" src="https://img.shields.io/badge/GetIt-009688?logo=dependabot&logoColor=white" />
+<img alt="GetStorage" src="https://img.shields.io/badge/GetStorage-512BD4?logo=storage&logoColor=white" />
+<img alt="Flutter Secure Storage" src="https://img.shields.io/badge/Flutter%20Secure%20Storage-239120?logo=azurekeyvault&logoColor=white" />
+<img alt="Crypto" src="https://img.shields.io/badge/Crypto-2E7D32?logo=lock&logoColor=white" />
+<img alt="GitHub Actions" src="https://img.shields.io/badge/GitHub%20Actions-2088FF?logo=github-actions&logoColor=white" />
+
+</div>
 Advanced Flutter demo app showing a **secure OAuth2 / OIDC PKCE flow** with token storage, Dio interceptors (Authorization + Refresh), and a mock backend — runs on **Android / iOS / Web**, no external server required.
 
 ---
 
 ## ✨ What this demonstrates
+
 - **PKCE** (code verifier + S256 challenge) end-to-end
 - **Token storage:** secure on mobile, local on web
 - **Dio interceptors:** inject `Authorization`, refresh on 401, retry original request
@@ -24,6 +28,7 @@ Advanced Flutter demo app showing a **secure OAuth2 / OIDC PKCE flow** with toke
 ---
 
 ## 🔐 Auth Flow (PKCE) — Diagram
+
 This is the real sequence app simulates locally.
 
 ```mermaid
@@ -53,6 +58,7 @@ sequenceDiagram
 ```
 
 -------------------------------------------------------------------------
+
 ```text
 🧱 Architecture
 lib/
@@ -78,6 +84,7 @@ lib/
         home/
             presentation/home_page.dart
 ```
+
 -------------------------------------------------------------------------
 
 * Key ideas
@@ -90,7 +97,7 @@ Mock servers behave like real endpoints (including 401s)
 
 ▶️ Run it
 flutter pub get
-flutter run -d chrome   # or your emulator/device
+flutter run -d chrome # or your emulator/device
 
 🧪 Tests
 flutter test
@@ -121,6 +128,7 @@ Logout clears tokens and returns to Login
 -------------------------------------------------------------------------
 
 ## ⚙️ Tech Stack
+
 - **Flutter**, **Dart**
 - **Dio** – API networking & interceptors
 - **GetIt** – dependency injection
