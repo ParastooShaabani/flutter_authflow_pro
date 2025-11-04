@@ -62,27 +62,37 @@ sequenceDiagram
 ```text
 🧱 Architecture
 lib/
-    app.dart
-    main.dart
-    routes/app_routes.dart
-    core/
-        di/locator.dart
-        utils/pkce.dart
-        storage/token_store.dart
-        network/
-                dio_client.dart
-                auth_interceptor.dart
-                refresh_interceptor.dart
-        mock/
-             mock_auth_server.dart
-             mock_api_server.dart
-    features/
-        auth/
-            data/auth_repository.dart
-            domain.models/token_set.dart
-            presentation/{login_page, consent_page, callback_page}.dart
-        home/
-            presentation/home_page.dart
+├─ main.dart
+├─ app.dart
+├─ routes/
+│   └─ app_routes.dart
+├─ core/
+│   ├─ di/
+│   │    └─ locator.dart
+│   ├─ utils/
+│   │    └─ pkce.dart
+│   ├─ storage/
+│   │    └─ token_store.dart
+│   ├─ network/
+│   │    ├─ dio_client.dart
+│   │    ├─ auth_interceptor.dart
+│   │    └─ refresh_interceptor.dart
+│   └─ mock/
+│        ├─ mock_auth_server.dart
+│        └─ mock_api_server.dart
+├─ features/
+│   ├─ auth/
+│   │    ├─ data/
+│   │    │    └─ auth_repository.dart
+│   │    ├─ domain/
+│   │    │    └─ models/token_set.dart
+│   │    └─ presentation/
+│   │         ├─ login_page.dart
+│   │         ├─ consent_page.dart
+│   │         └─ callback_page.dart
+│   └─ home/
+│        └─ presentation/
+│             └─ home_page.dart
 ```
 
 -------------------------------------------------------------------------
